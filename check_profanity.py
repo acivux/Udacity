@@ -18,6 +18,6 @@ def check_profanity(text_to_check):
 	elif "false" in output:
 		print "This document has no curse words!"
 	else:
-		print "Could not scan the document properly."
+		print "Could not scan the document properly"
 
 read_text()
