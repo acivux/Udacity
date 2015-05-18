@@ -93,8 +93,8 @@ main_page_head = '''
         height: 88px;
         overflow: hidden;
         position: absolute;
-        top: -3px;
-        right: -3px;
+        top: -1px;
+        right: -1px;
       }
 
       .ribbon {
@@ -153,21 +153,7 @@ main_page_head = '''
         background-image:      -o-linear-gradient(top, #fc7171, #DD0000);
       }
 
-      .ribbon-green:before, .ribbon-green:after {
-        content: "";
-        border-top:   3px solid #6e8900;
-        border-left:  3px solid transparent;
-        border-right: 3px solid transparent;
-        position:absolute;
-        bottom: -3px;
-      }
 
-      .ribbon:before {
-        left: 0;
-      }
-      .ribbon:after {
-        right: 0;
-      }
 
 
     </style>
