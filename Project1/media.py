@@ -6,7 +6,7 @@ import webbrowser
 class Movie():
     """Class for storing movie information"""
 
-    VALID_RATINGS = ["G", "PG", "PG-13", "R"]
+    VALID_RATINGS = ["G", "PG", "PG-13", "R", "NC-17"]
 
     def __init__(self, m_title, m_storyline, m_poster, m_trailer):
         """Constructor for the Movie class"""

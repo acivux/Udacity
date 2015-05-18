@@ -1,7 +1,9 @@
 __author__ = 'jannie.vanniekerk'
 
-from media import Movie
 import inspect
+
+from Project1.media import Movie
+
 
 class_name = Movie.__name__
 module_name = Movie.__module__

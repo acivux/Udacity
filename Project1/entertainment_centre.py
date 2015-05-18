@@ -1,8 +1,8 @@
+from Project1 import fresh_tomatoes
+
 __author__ = 'jannie'
 
-import fresh_tomatoes
-
-from media import Movie
+from Project1.media import Movie
 
 aliens = Movie("Aliens", "A scary movie",
                "http://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Aliens_poster.jpg/220px-Aliens_poster.jpg",
