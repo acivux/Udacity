@@ -40,6 +40,14 @@ main_page_head = '''
             background-color: #EEE;
             cursor: pointer;
         }
+        .movie-tile:hover .bookmark:after{
+            content:'';
+            display:block;
+            border:10px solid transparent;
+            border-bottom-color:#EEE;
+            position:absolute;
+            bottom:0;
+        }
         .scale-media {
             padding-bottom: 56.25%;
             position: relative;
@@ -53,6 +61,115 @@ main_page_head = '''
             top: 0;
             background-color: white;
         }
+
+        .starcontainer {
+            width: 100%;
+        }
+        .star {
+            display:inline-block;
+            background-image: url(star_really_small.png);
+            background-size: auto;
+            background-repeat: repeat-x;
+            background-position: left center;
+            line-height: 75px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 9pt;
+            width: 16px;
+            height: 15px;
+        }
+
+        .wrapper {
+        width: 220px;
+        height: 342px;
+        background: white;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .ribbon-wrapper {
+        width: 85px;
+        height: 88px;
+        overflow: hidden;
+        position: absolute;
+        top: -3px;
+        right: -3px;
+      }
+
+      .ribbon {
+        font: bold 15px Sans-Serif;
+        color: #333;
+        text-align: center;
+        text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform:    rotate(45deg);
+        -ms-transform:     rotate(45deg);
+        -o-transform:      rotate(45deg);
+        position: relative;
+        padding: 7px 0;
+        left: -5px;
+        top: 15px;
+        width: 120px;
+        color: #6a6340;
+        -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+        -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+        box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+      }
+
+      .ribbon-green {
+        background-color: #BFDC7A;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
+        background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
+        background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
+        background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
+        background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
+      }
+
+      .ribbon-blue {
+        background-color: #7abcff;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#7abcff), to(#4096ee));
+        background-image: -webkit-linear-gradient(top, #7abcff, #4096ee);
+        background-image:    -moz-linear-gradient(top, #7abcff, #4096ee);
+        background-image:     -ms-linear-gradient(top, #7abcff, #4096ee);
+        background-image:      -o-linear-gradient(top, #7abcff, #4096ee);
+      }
+
+      .ribbon-orange {
+        background-color: #f6e6b4;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#f6e6b4), to(#ed9017));
+        background-image: -webkit-linear-gradient(top, #f6e6b4, #ed9017);
+        background-image:    -moz-linear-gradient(top, #f6e6b4, #ed9017);
+        background-image:     -ms-linear-gradient(top, #f6e6b4, #ed9017);
+        background-image:      -o-linear-gradient(top, #f6e6b4, #ed9017);
+      }
+
+      .ribbon-red {
+        background-color: #fc7171;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#fc7171), to(#DD0000));
+        background-image: -webkit-linear-gradient(top, #fc7171, #DD0000);
+        background-image:    -moz-linear-gradient(top, #fc7171, #DD0000);
+        background-image:     -ms-linear-gradient(top, #fc7171, #DD0000);
+        background-image:      -o-linear-gradient(top, #fc7171, #DD0000);
+      }
+
+      .ribbon-green:before, .ribbon-green:after {
+        content: "";
+        border-top:   3px solid #6e8900;
+        border-left:  3px solid transparent;
+        border-right: 3px solid transparent;
+        position:absolute;
+        bottom: -3px;
+      }
+
+      .ribbon:before {
+        left: 0;
+      }
+      .ribbon:after {
+        right: 0;
+      }
+
+
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -120,8 +237,12 @@ main_page_content = '''
 # A single movie entry html template
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
+    <div class="wrapper">
+        <img src="{poster_image_url}" width="220" height="342">
+        <div class="ribbon-wrapper"><div class="ribbon {mpaa_color}">{mpaa_restriction}</div></div>
+    </div>
     <h2>{movie_title}</h2>
+    <div class="starcontainer"><div class="star" style="width:{movie_rating}px"></div></div>
 </div>
 '''
 
@@ -133,12 +254,18 @@ def create_movie_tiles_content(movies):
         youtube_id_match = re.search(r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
         youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
         trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
+        viewer_rating = movie.viewer_rating
+        mpaa_rating = movie.mpaa_rating
+        mpaa_color_style = movie.mpaa_rating_style
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            trailer_youtube_id=trailer_youtube_id,
+            movie_rating=viewer_rating * 16,
+            mpaa_restriction=mpaa_rating,
+            mpaa_color=mpaa_color_style
         )
     return content
 
