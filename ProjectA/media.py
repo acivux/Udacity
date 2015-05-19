@@ -12,13 +12,12 @@ class Movie():
                           "R": "ribbon-orange",
                           "NC-17": "ribbon-red"}
 
-
-
     def __init__(self, m_title, m_storyline, m_poster, m_trailer, m_viewer_rating, m_mpaa_rating):
         """Constructor for the Movie class"""
 
         # MPAA rating is required
         assert m_mpaa_rating in self.VALID_MPAA_RATINGS.keys(), "MPAA rating missing or not correct: %s" % m_title
+
         # Viewer rating validation
         assert 0 < m_viewer_rating < 6, "Viewer rating must be between 1 and 5: %s" % m_title
 

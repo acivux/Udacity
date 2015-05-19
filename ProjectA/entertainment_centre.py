@@ -4,7 +4,7 @@ from ProjectA import fresh_tomatoes
 from ProjectA.media import Movie
 
 
-# Creates the movie data as a list
+# Create movie data
 movies = [Movie(
     "Aliens", "A scary movie",
     "http://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Aliens_poster.jpg/220px-Aliens_poster.jpg",
@@ -38,7 +38,7 @@ movies = [Movie(
     "http://upload.wikimedia.org/wikipedia/en/thumb/8/87/StarWarsMoviePoster1977.jpg/220px-StarWarsMoviePoster1977.jpg",
     "https://www.youtube.com/watch?v=9gvqpFbRKtQ", 5, "PG")]
 
-# Generates the webpage
+# Generate webpage
 fresh_tomatoes.open_movies_page(movies)
 
 
