@@ -1,6 +1,7 @@
 
 Execute this Python script in your favourite environment:
-entertainment_centre.py
+
+`entertainment_centre.py`
 
 ### Legal
 * Ribbon CSS:
