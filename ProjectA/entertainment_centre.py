@@ -34,7 +34,7 @@ movies = [Movie(
     "http://upload.wikimedia.org/wikipedia/en/thumb/c/c6/The_Goonies.jpg/220px-The_Goonies.jpg",
     "https://www.youtube.com/watch?v=pWgc8Ute2tU", 4, "PG"),
     Movie(
-    "Start Wars IV", "Rebellion groes stronger",
+    "Start Wars IV", "Rebellion grows stronger",
     "http://upload.wikimedia.org/wikipedia/en/thumb/8/87/StarWarsMoviePoster1977.jpg/220px-StarWarsMoviePoster1977.jpg",
     "https://www.youtube.com/watch?v=9gvqpFbRKtQ", 5, "PG")]
 

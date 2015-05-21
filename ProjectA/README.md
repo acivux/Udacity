@@ -1,7 +1,9 @@
+##### Download
+- 
 
-Execute this Python script in your favourite environment:
-
-`entertainment_centre.py`
+##### Installation
+- Copy all the project files into the same folder.
+- Run `entertainment_centre.py`
 
 ##### Requirements
 - Python 2.7.6 or later
