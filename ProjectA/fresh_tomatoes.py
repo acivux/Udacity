@@ -62,8 +62,13 @@ main_page_head = '''
             background-color: white;
         }
 
+        .movie-title{
+            margin-bottom:0pt;
+        }
+
         .starcontainer {
             width: 100%;
+            padding-bottom:10pt;
         }
         .star {
             display:inline-block;
@@ -227,7 +232,7 @@ movie_tile_content = '''
         <img src="{poster_image_url}" width="220" height="342">
         <div class="ribbon-wrapper"><div class="ribbon {mpaa_color}">{mpaa_restriction}</div></div>
     </div>
-    <h2>{movie_title}</h2>
+    <h2 class="movie-title">{movie_title}</h2>
     <div class="starcontainer"><div class="star" style="width:{movie_rating}px"></div></div>
 </div>
 '''
