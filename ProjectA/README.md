@@ -1,4 +1,6 @@
-##### Installation
+###Movie Trailer Website
+
+#####Installation
 - Download the files from https://github.com/acivux/Udacity/tree/master/ProjectA
 - Copy all the project files into the same folder.
 - Run `entertainment_centre.py`
