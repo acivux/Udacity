@@ -1,7 +1,7 @@
 __author__ = 'jannie'
 
-from ProjectA import fresh_tomatoes
-from ProjectA.media import Movie
+import fresh_tomatoes
+from media import Movie
 
 
 # Create movie data
